@@ -5,27 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>ColorOS 17 Liquid Glass Studio</title>
   <style>
-    :root {
-      --bg-app: #0b0e14;
-      --card-bg: rgba(22, 27, 38, 0.78);
-      --border-subtle: rgba(255, 255, 255, 0.12);
-      --accent: #0a84ff;
-      --accent-glow: rgba(10, 132, 255, 0.45);
-      --text-main: #f5f7fa;
-      --text-muted: #94a3b8;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      -webkit-tap-highlight-color: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     body {
-      background: radial-gradient(circle at top, #161d2e 0%, #090b10 100%);
-      color: var(--text-main);
+      background: #090b10;
+      color: #f5f7fa;
       min-height: 100vh;
       padding: 14px;
       display: flex;
@@ -38,48 +27,38 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      padding-bottom: 30px;
+      padding-bottom: 40px;
     }
 
-    /* Header */
     .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 14px;
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border-subtle);
-      border-radius: 18px;
+      padding: 12px 14px;
+      background: #141924;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
     }
 
     .header-title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      letter-spacing: -0.2px;
     }
 
     .badge-fix {
       font-size: 10px;
-      background: rgba(16, 185, 129, 0.18);
+      background: rgba(16, 185, 129, 0.2);
       color: #34d399;
-      border: 1px solid rgba(52, 211, 153, 0.35);
+      border: 1px solid rgba(52, 211, 153, 0.4);
       padding: 3px 8px;
       border-radius: 20px;
       font-weight: 600;
     }
 
-    /* Section Cards */
     .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      border: 1px solid var(--border-subtle);
-      border-radius: 18px;
+      background: #141924;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
       padding: 14px;
       display: flex;
       flex-direction: column;
@@ -90,53 +69,42 @@
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.7px;
-      color: var(--text-muted);
+      letter-spacing: 0.6px;
+      color: #94a3b8;
       display: flex;
       justify-content: space-between;
-      align-items: center;
     }
 
-    /* Inputs & Buttons */
     .row {
       display: flex;
       gap: 8px;
-      align-items: center;
     }
 
     input[type="text"] {
       flex: 1;
-      background: rgba(10, 14, 22, 0.75);
-      border: 1px solid var(--border-subtle);
+      background: #0b0e14;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: #fff;
       padding: 10px 12px;
-      border-radius: 12px;
+      border-radius: 11px;
       font-size: 13px;
       outline: none;
     }
 
-    input[type="text"]:focus {
-      border-color: var(--accent);
+    button {
+      cursor: pointer;
+      border: none;
+      font-weight: 600;
     }
 
     .btn-auto {
-      background: linear-gradient(135deg, #0a84ff, #2563eb);
+      background: #0a84ff;
       color: #fff;
-      border: none;
       padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 600;
+      border-radius: 11px;
       font-size: 13px;
-      cursor: pointer;
-      box-shadow: 0 4px 14px var(--accent-glow);
-      transition: transform 0.15s;
     }
 
-    .btn-auto:active {
-      transform: scale(0.96);
-    }
-
-    /* Preset Chips */
     .presets-grid {
       display: flex;
       flex-wrap: wrap;
@@ -144,98 +112,46 @@
     }
 
     .chip {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #1e2636;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: #e2e8f0;
       padding: 6px 11px;
       border-radius: 20px;
       font-size: 12px;
-      cursor: pointer;
-      transition: all 0.2s;
     }
 
-    .chip.active, .chip:hover {
-      background: rgba(10, 132, 255, 0.25);
-      border-color: #0a84ff;
+    .chip.active {
+      background: #0a84ff;
       color: #fff;
+      border-color: #38bdf8;
     }
 
-    /* File Upload Box */
-    .file-box {
+    .file-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(10, 14, 22, 0.75);
-      border: 1px dashed rgba(255, 255, 255, 0.2);
-      padding: 8px 12px;
-      border-radius: 12px;
+      background: #0b0e14;
+      border: 1px dashed rgba(255, 255, 255, 0.25);
+      padding: 9px 12px;
+      border-radius: 11px;
       font-size: 12px;
     }
 
-    .file-box input[type="file"] {
-      display: none;
-    }
-
-    .file-btn {
-      background: rgba(255, 255, 255, 0.12);
+    .btn-upload {
+      background: #2563eb;
       color: #fff;
-      padding: 5px 10px;
+      padding: 6px 12px;
       border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
+      font-size: 12px;
     }
 
-    /* Toggle Switch */
     .toggle-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 12.5px;
-      color: #e2e8f0;
     }
 
-    .switch {
-      position: relative;
-      width: 40px;
-      height: 22px;
-    }
-
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .slider-round {
-      position: absolute;
-      cursor: pointer;
-      inset: 0;
-      background-color: rgba(255, 255, 255, 0.15);
-      border-radius: 22px;
-      transition: 0.3s;
-    }
-
-    .slider-round:before {
-      position: absolute;
-      content: "";
-      height: 16px;
-      width: 16px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      border-radius: 50%;
-      transition: 0.3s;
-    }
-
-    input:checked + .slider-round {
-      background-color: #0a84ff;
-    }
-
-    input:checked + .slider-round:before {
-      transform: translateX(18px);
-    }
-
-    /* Color Pickers Grid */
     .colors-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -243,10 +159,10 @@
     }
 
     .color-item {
-      background: rgba(10, 14, 22, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0b0e14;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 7px 10px;
-      border-radius: 11px;
+      border-radius: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -255,29 +171,17 @@
     }
 
     .color-item input[type="color"] {
-      -webkit-appearance: none;
+      width: 26px;
+      height: 22px;
       border: none;
-      width: 24px;
-      height: 20px;
-      border-radius: 6px;
-      background: transparent;
+      background: none;
       cursor: pointer;
     }
 
-    .color-item input[type="color"]::-webkit-color-swatch-wrapper {
-      padding: 0;
-    }
-
-    .color-item input[type="color"]::-webkit-color-swatch {
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 5px;
-    }
-
-    /* Range Sliders */
     .slider-group {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
 
     .slider-header {
@@ -290,12 +194,9 @@
     input[type="range"] {
       width: 100%;
       accent-color: #0a84ff;
-      height: 5px;
-      border-radius: 5px;
-      background: rgba(255,255,255,0.15);
     }
 
-    /* LIVE PREVIEW CONTAINER */
+    /* Live Preview */
     .preview-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -304,24 +205,20 @@
 
     .phone-mock {
       position: relative;
-      height: 255px;
-      border-radius: 18px;
+      height: 250px;
+      border-radius: 16px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       background: #0d131f;
     }
 
     .mock-wallpaper {
       position: absolute;
-      inset: -12px;
+      inset: -10px;
       background-size: cover;
       background-position: center;
       background-image: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e1b4b 100%);
       z-index: 0;
-      transition: filter 0.2s;
     }
 
     .mock-dimmer {
@@ -330,7 +227,6 @@
       background: #000;
       opacity: 0.25;
       z-index: 1;
-      pointer-events: none;
     }
 
     .mock-content {
@@ -345,20 +241,17 @@
 
     .mock-topbar {
       padding: 6px 8px;
-      border-radius: 11px;
+      border-radius: 10px;
       font-size: 11px;
       font-weight: 700;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      backdrop-filter: blur(12px);
     }
 
     .chat-list-item {
       padding: 6px 7px;
-      border-radius: 10px;
+      border-radius: 9px;
       margin-bottom: 5px;
-      backdrop-filter: blur(8px);
     }
 
     .chat-name {
@@ -370,7 +263,7 @@
 
     .chat-sub {
       font-size: 9.5px;
-      opacity: 0.8;
+      opacity: 0.85;
       margin-top: 2px;
     }
 
@@ -393,55 +286,32 @@
       font-size: 10px;
       line-height: 1.3;
       max-width: 88%;
-      backdrop-filter: blur(12px);
     }
 
-    .bubble.friend {
-      align-self: flex-start;
-    }
-
-    .bubble.me {
-      align-self: flex-end;
-    }
+    .bubble.friend { align-self: flex-start; }
+    .bubble.me { align-self: flex-end; }
 
     .date-pill {
       align-self: center;
       font-size: 9px;
       padding: 2px 8px;
       border-radius: 10px;
-      backdrop-filter: blur(8px);
     }
 
     .mock-input {
       padding: 5px 9px;
-      border-radius: 12px;
+      border-radius: 11px;
       font-size: 10px;
-      opacity: 0.85;
-      backdrop-filter: blur(10px);
-    }
-
-    /* Action Buttons */
-    .action-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
     }
 
     .btn-primary {
       width: 100%;
       padding: 14px;
-      border-radius: 15px;
-      border: none;
+      border-radius: 14px;
       background: linear-gradient(135deg, #00b4db, #0083b0);
       color: #fff;
       font-size: 15px;
       font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0, 180, 219, 0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
     }
 
     .btn-secondary-row {
@@ -451,126 +321,110 @@
     }
 
     .btn-sec {
-      padding: 10px;
+      padding: 11px;
       border-radius: 12px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: #1e2636;
       color: #e2e8f0;
       font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
     }
 
-    .hint-text {
+    .status-toast {
       text-align: center;
-      font-size: 11px;
-      color: var(--text-muted);
+      font-size: 12px;
+      color: #34d399;
+      min-height: 18px;
     }
   </style>
 </head>
 <body>
 
 <div class="studio-wrapper">
-  <!-- Header -->
   <div class="header">
-    <div class="header-title">💧 ColorOS 17 Liquid Glass Studio</div>
-    <span class="badge-fix">White-Bug Fixed</span>
+    <div class="header-title">💧 ColorOS 17 Liquid Glass</div>
+    <span class="badge-fix">v2.1 Working</span>
   </div>
 
-  <!-- 1. Mood & Vibe Generator -->
+  <!-- 1. Mood Generator -->
   <div class="card">
     <div class="section-label">
-      <span>1. Auto Mood & Vibe Generator</span>
+      <span>1. Mood & Presets</span>
       <span id="modeLabel" style="color:#38bdf8;">Dark Glass</span>
     </div>
     <div class="row">
-      <input type="text" id="moodInput" placeholder="e.g. Black, Cyberpunk, Rose, Ocean..." value="Black" />
-      <button class="btn-auto" onclick="generateMood()">Auto ✨</button>
+      <input type="text" id="moodInput" placeholder="Black, Sakura, Emerald, Neon, Light..." value="Black" />
+      <button type="button" class="btn-auto" id="btnAutoMood">Auto ✨</button>
     </div>
-    <div class="presets-grid">
-      <div class="chip active" onclick="applyPreset('ice', this)">💧 ColorOS Ice</div>
-      <div class="chip" onclick="applyPreset('sakura', this)">🌸 Sakura</div>
-      <div class="chip" onclick="applyPreset('midnight', this)">🌃 Midnight</div>
-      <div class="chip" onclick="applyPreset('emerald', this)">🌿 Emerald</div>
-      <div class="chip" onclick="applyPreset('neon', this)">⚡ Neon</div>
-      <div class="chip" onclick="applyPreset('crystal', this)">🤍 Crystal Light</div>
+    <div class="presets-grid" id="presetsBox">
+      <button type="button" class="chip active" data-preset="ice">💧 ColorOS Ice</button>
+      <button type="button" class="chip" data-preset="sakura">🌸 Sakura</button>
+      <button type="button" class="chip" data-preset="midnight">🌃 Midnight</button>
+      <button type="button" class="chip" data-preset="emerald">🌿 Emerald</button>
+      <button type="button" class="chip" data-preset="neon">⚡ Neon</button>
+      <button type="button" class="chip" data-preset="crystal">🤍 Crystal Light</button>
     </div>
   </div>
 
-  <!-- 2. Wallpaper & Smart Sync -->
+  <!-- 2. Wallpaper -->
   <div class="card">
-    <div class="section-label">
-      <span>2. Wallpaper & Smart Contrast Guard</span>
-    </div>
+    <div class="section-label"><span>2. Wallpaper & Contrast Guard</span></div>
     <input type="text" id="themeName" value="ColorOS17_LiquidGlass" placeholder="Theme File Name" />
-    <div class="file-box">
-      <span id="fileNameDisplay" style="color:#94a3b8; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:210px;">Default Frosted Gradient</span>
-      <label class="file-btn">
-        Choose Photo
-        <input type="file" id="wallInput" accept="image/*" onchange="handleWallpaper(event)" />
-      </label>
+    <div class="file-row">
+      <span id="fileNameDisplay" style="color:#94a3b8; max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Default Gradient</span>
+      <button type="button" class="btn-upload" id="btnChoosePhoto">Choose Photo</button>
+      <input type="file" id="wallInput" accept="image/*" style="display:none;" />
     </div>
-
     <div class="toggle-row">
-      <span>🛡️ Auto Text Contrast Guard (Anti-Glare)</span>
-      <label class="switch">
-        <input type="checkbox" id="autoContrast" checked onchange="updatePreview()" />
-        <span class="slider-round"></span>
-      </label>
+      <span>🛡️ Auto Text Contrast Guard</span>
+      <input type="checkbox" id="autoContrast" checked style="width:18px; height:18px; accent-color:#0a84ff;" />
     </div>
   </div>
 
-  <!-- 3. Color Pickers -->
+  <!-- 3. Colors -->
   <div class="card">
     <div class="section-label">
-      <span>3. Liquid Glass Palette</span>
-      <span style="font-size:10px; color:#34d399;">Safe ARGB Lock ON</span>
+      <span>3. Liquid Glass Colors</span>
+      <span style="font-size:10px; color:#34d399;">Safe ARGB Lock</span>
     </div>
     <div class="colors-grid">
-      <div class="color-item"><span>Home List BG</span><input type="color" id="cHomeBg" value="#101522" oninput="updatePreview()" /></div>
-      <div class="color-item"><span>Glass Bars/Tabs</span><input type="color" id="cBars" value="#182234" oninput="updatePreview()" /></div>
-      <div class="color-item"><span>My Bubble</span><input type="color" id="cMyBubble" value="#0a84ff" oninput="updatePreview()" /></div>
-      <div class="color-item"><span>Friend Bubble</span><input type="color" id="cFriendBubble" value="#1e293b" oninput="updatePreview()" /></div>
-      <div class="color-item"><span>Main Text</span><input type="color" id="cMainText" value="#ffffff" oninput="updatePreview()" /></div>
-      <div class="color-item"><span>Time / Subtext</span><input type="color" id="cSubText" value="#cbd5e1" oninput="updatePreview()" /></div>
-      <div class="color-item"><span>Accent / Icons</span><input type="color" id="cAccent" value="#38bdf8" oninput="updatePreview()" /></div>
-      <div class="color-item"><span>Date / Float</span><input type="color" id="cFloat" value="#1e293b" oninput="updatePreview()" /></div>
+      <div class="color-item"><span>Home List BG</span><input type="color" id="cHomeBg" value="#101522" /></div>
+      <div class="color-item"><span>Glass Bars/Tabs</span><input type="color" id="cBars" value="#182234" /></div>
+      <div class="color-item"><span>My Bubble</span><input type="color" id="cMyBubble" value="#0a84ff" /></div>
+      <div class="color-item"><span>Friend Bubble</span><input type="color" id="cFriendBubble" value="#1e293b" /></div>
+      <div class="color-item"><span>Main Text</span><input type="color" id="cMainText" value="#ffffff" /></div>
+      <div class="color-item"><span>Time / Subtext</span><input type="color" id="cSubText" value="#cbd5e1" /></div>
+      <div class="color-item"><span>Accent / Icons</span><input type="color" id="cAccent" value="#38bdf8" /></div>
+      <div class="color-item"><span>Date / Float</span><input type="color" id="cFloat" value="#1e293b" /></div>
     </div>
   </div>
 
-  <!-- 4. Sliders (Opacity, Blur, Darkness, Border, Radius) -->
+  <!-- 4. Sliders -->
   <div class="card">
-    <div class="section-label"><span>4. Glass Physics & Readability</span></div>
-
+    <div class="section-label"><span>4. Glass Opacity, Blur & Darkness</span></div>
     <div class="slider-group">
       <div class="slider-header"><span>💧 Liquid Glass Opacity</span><span id="valOpacity">55%</span></div>
-      <input type="range" id="sOpacity" min="20" max="88" value="55" oninput="updatePreview()" />
+      <input type="range" id="sOpacity" min="20" max="88" value="55" />
     </div>
-
     <div class="slider-group">
       <div class="slider-header"><span>🌫️ Wallpaper Frost Blur</span><span id="valBlur">6 px</span></div>
-      <input type="range" id="sBlur" min="0" max="20" value="6" oninput="updatePreview()" />
+      <input type="range" id="sBlur" min="0" max="20" value="6" />
     </div>
-
     <div class="slider-group">
-      <div class="slider-header"><span>🌑 Wallpaper Dimming (Darkness)</span><span id="valDim">25%</span></div>
-      <input type="range" id="sDim" min="0" max="80" value="25" oninput="updatePreview()" />
+      <div class="slider-header"><span>🌑 Wallpaper Darkness (Dim)</span><span id="valDim">25%</span></div>
+      <input type="range" id="sDim" min="0" max="80" value="25" />
     </div>
-
     <div class="slider-group">
-      <div class="slider-header"><span>✨ Glass Edge Highlight (Border)</span><span id="valBorder">30%</span></div>
-      <input type="range" id="sBorder" min="0" max="80" value="30" oninput="updatePreview()" />
+      <div class="slider-header"><span>✨ Glass Edge Border</span><span id="valBorder">30%</span></div>
+      <input type="range" id="sBorder" min="0" max="80" value="30" />
     </div>
-
     <div class="slider-group">
       <div class="slider-header"><span>⚪ Bubble Corner Radius</span><span id="valRadius">16 px</span></div>
-      <input type="range" id="sRadius" min="6" max="24" value="16" oninput="updatePreview()" />
+      <input type="range" id="sRadius" min="6" max="24" value="16" />
     </div>
   </div>
 
-  <!-- 5. Live Dual Preview -->
+  <!-- 5. Live Preview -->
   <div class="preview-grid">
-    <!-- Left Screen: Chat List -->
     <div class="phone-mock">
       <div class="mock-wallpaper" id="wall1"></div>
       <div class="mock-dimmer" id="dim1"></div>
@@ -587,11 +441,11 @@
             </div>
             <div class="chat-list-item" id="listItem2">
               <div class="chat-name"><span id="tName2">Saved Messages</span></div>
-              <div class="chat-sub" id="tSub2">No white box glitch</div>
+              <div class="chat-sub" id="tSub2">No white box error</div>
             </div>
             <div class="chat-list-item" id="listItem3">
               <div class="chat-name"><span id="tName3">ColorOS Studio</span></div>
-              <div class="chat-sub" id="tSub3">Glass UI v2.0 ✨</div>
+              <div class="chat-sub" id="tSub3">Glass UI v2.1 ✨</div>
             </div>
           </div>
         </div>
@@ -599,7 +453,6 @@
       </div>
     </div>
 
-    <!-- Right Screen: Chat View -->
     <div class="phone-mock">
       <div class="mock-wallpaper" id="wall2"></div>
       <div class="mock-dimmer" id="dim2"></div>
@@ -608,39 +461,30 @@
           <span>Kiewie ✨</span>
           <span style="font-size:9px; opacity:0.8;">online</span>
         </div>
-
         <div class="msg-area">
           <div class="date-pill" id="datePill">November 27</div>
           <div class="bubble friend" id="bFriend">
             <div style="font-weight:700; font-size:9px; margin-bottom:2px;" id="replySender">Raja Kumar</div>
             Frosted depth & zero white error 💧
           </div>
-          <div class="bubble me" id="bMe">
-            Crystal edges look super clean ✨
-          </div>
+          <div class="bubble me" id="bMe">Crystal edges look super clean ✨</div>
         </div>
-
         <div class="mock-input" id="msgInputMock">Message...</div>
       </div>
     </div>
   </div>
 
-  <!-- 6. Action Buttons -->
-  <div class="action-stack">
-    <button class="btn-primary" onclick="exportAndShareTheme()">
-      🎨 Set Theme in Telegram
-    </button>
-    <div class="btn-secondary-row">
-      <button class="btn-sec" onclick="downloadOnly()">⬇️ Download .attheme</button>
-      <button class="btn-sec" onclick="resetSafeGlass()">🛡️ Fix White Glitch</button>
-    </div>
-    <div class="hint-text">Tap "Set Theme" → Share to Telegram Saved Messages → Tap file to Apply ✨</div>
+  <!-- 6. Actions -->
+  <button type="button" class="btn-primary" id="btnDownloadMain">⬇️ Download & Apply (.attheme)</button>
+  <div class="btn-secondary-row">
+    <button type="button" class="btn-sec" id="btnShareTg">📤 Share to Telegram</button>
+    <button type="button" class="btn-sec" id="btnFixWhite">🛡️ Fix White Glitch</button>
   </div>
+  <div class="status-toast" id="statusToast"></div>
 </div>
 
 <script>
-  let customWallpaperDataUrl = null;
-
+(function() {
   const presets = {
     ice: {
       home: "#0d1624", bars: "#152338", my: "#0a84ff", friend: "#192942",
@@ -674,11 +518,35 @@
     }
   };
 
-  function applyPreset(key, el) {
-    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-    if (el) el.classList.add('active');
+  function showToast(msg) {
+    const el = document.getElementById('statusToast');
+    el.textContent = msg;
+    setTimeout(() => { if (el.textContent === msg) el.textContent = ""; }, 4000);
+  }
 
+  function hexToRgb(hex) {
+    const clean = hex.replace('#', '');
+    const num = parseInt(clean, 16);
+    return { r: (num >> 16) & 255, g: (num >> 8) & 255, b: num & 255 };
+  }
+
+  function rgbaStr(hex, a) {
+    const { r, g, b } = hexToRgb(hex);
+    return `rgba(${r}, ${g}, ${b}, ${a.toFixed(2)})`;
+  }
+
+  function getLum(hex) {
+    const { r, g, b } = hexToRgb(hex);
+    return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  }
+
+  function applyPreset(key) {
     const p = presets[key];
+    if (!p) return;
+    document.querySelectorAll('.chip').forEach(c => {
+      c.classList.toggle('active', c.getAttribute('data-preset') === key);
+    });
+
     document.getElementById('cHomeBg').value = p.home;
     document.getElementById('cBars').value = p.bars;
     document.getElementById('cMyBubble').value = p.my;
@@ -689,4 +557,78 @@
     document.getElementById('cFloat').value = p.float;
 
     document.getElementById('sOpacity').value = p.opacity;
-    document.getElementById('sBl
+    document.getElementById('sBlur').value = p.blur;
+    document.getElementById('sDim').value = p.dim;
+    document.getElementById('sBorder').value = p.border;
+    document.getElementById('sRadius').value = p.radius;
+    document.getElementById('modeLabel').textContent = p.mode;
+    updatePreview();
+  }
+
+  function updatePreview() {
+    const homeBg = document.getElementById('cHomeBg').value;
+    const bars = document.getElementById('cBars').value;
+    const myBubble = document.getElementById('cMyBubble').value;
+    const friendBubble = document.getElementById('cFriendBubble').value;
+    let mainText = document.getElementById('cMainText').value;
+    let subText = document.getElementById('cSubText').value;
+    const accent = document.getElementById('cAccent').value;
+    const floatBg = document.getElementById('cFloat').value;
+
+    const opacity = parseInt(document.getElementById('sOpacity').value, 10) / 100;
+    const blur = document.getElementById('sBlur').value;
+    const dim = parseInt(document.getElementById('sDim').value, 10) / 100;
+    const borderA = parseInt(document.getElementById('sBorder').value, 10) / 100;
+    const radius = document.getElementById('sRadius').value;
+
+    document.getElementById('valOpacity').textContent = Math.round(opacity * 100) + '%';
+    document.getElementById('valBlur').textContent = blur + ' px';
+    document.getElementById('valDim').textContent = Math.round(dim * 100) + '%';
+    document.getElementById('valBorder').textContent = Math.round(borderA * 100) + '%';
+    document.getElementById('valRadius').textContent = radius + ' px';
+
+    if (document.getElementById('autoContrast').checked) {
+      const bgLum = getLum(homeBg);
+      if (bgLum > 0.72 && getLum(mainText) > 0.72) {
+        mainText = '#0f172a';
+        subText = '#334155';
+      } else if (bgLum < 0.25 && getLum(mainText) < 0.25) {
+        mainText = '#ffffff';
+        subText = '#cbd5e1';
+      }
+    }
+
+    const borderCss = `1px solid rgba(255,255,255,${borderA.toFixed(2)})`;
+
+    document.getElementById('wall1').style.filter = `blur(${blur}px)`;
+    document.getElementById('wall2').style.filter = `blur(${blur}px)`;
+    document.getElementById('dim1').style.opacity = dim;
+    document.getElementById('dim2').style.opacity = dim;
+
+    ['topBar1', 'topBar2'].forEach(id => {
+      const el = document.getElementById(id);
+      el.style.background = rgbaStr(bars, Math.min(0.92, opacity + 0.12));
+      el.style.color = mainText;
+      el.style.border = borderCss;
+    });
+
+    document.getElementById('accentBadge1').style.color = accent;
+    document.getElementById('unreadBadge').style.background = accent;
+
+    ['listItem1', 'listItem2', 'listItem3'].forEach(id => {
+      const el = document.getElementById(id);
+      el.style.background = rgbaStr(homeBg, opacity);
+      el.style.border = borderCss;
+    });
+
+    ['tName1', 'tName2', 'tName3'].forEach(id => document.getElementById(id).style.color = mainText);
+    ['tSub1', 'tSub2', 'tSub3'].forEach(id => document.getElementById(id).style.color = subText);
+
+    const bFriend = document.getElementById('bFriend');
+    bFriend.style.background = rgbaStr(friendBubble, Math.min(0.92, opacity + 0.1));
+    bFriend.style.color = mainText;
+    bFriend.style.border = borderCss;
+    bFriend.style.borderRadius = `${radius}px ${radius}px ${radius}px 4px`;
+
+    const bMe = document.getElementById('bMe');
+    bMe.style.background =
