@@ -2,96 +2,101 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ColorOS 17 Liquid Glass Studio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Liquid Glass Theme Studio ✨</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,sans-serif}
-body{background:#090b10;color:#f5f7fa;padding:12px;display:flex;justify-content:center}
-.wrap{width:100%;max-width:430px;display:flex;flex-direction:column;gap:11px;padding-bottom:35px}
-.card{background:#141924;border:1px solid #263042;border-radius:15px;padding:13px;display:flex;flex-direction:column;gap:10px}
+body{background:radial-gradient(circle at top,#171e30 0%,#090b10 100%);color:#f8fafc;padding:12px;display:flex;justify-content:center}
+.wrap{width:100%;max-width:430px;display:flex;flex-direction:column;gap:11px;padding-bottom:40px}
+.card{background:rgba(20,25,38,.88);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:13px;display:flex;flex-direction:column;gap:10px}
 .top{display:flex;justify-content:space-between;align-items:center}
-.badge{font-size:11px;background:#064e3b;color:#34d399;padding:3px 9px;border-radius:12px;font-weight:700}
-.lbl{font-size:11px;color:#94a3b8;font-weight:700;text-transform:uppercase}
+.badge{font-size:11px;background:rgba(16,185,129,.2);color:#34d399;border:1px solid rgba(52,211,153,.4);padding:3px 9px;border-radius:12px;font-weight:700}
+.lbl{font-size:11px;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:.5px;display:flex;justify-content:space-between}
 .row{display:flex;gap:8px}
-input[type=text]{flex:1;background:#0b0e14;border:1px solid #2a3447;color:#fff;padding:9px 11px;border-radius:10px;font-size:13px}
+input[type=text]{flex:1;background:#0b0e14;border:1px solid #2a3447;color:#fff;padding:9px 11px;border-radius:10px;font-size:13px;outline:none}
 button{border:none;font-weight:600;cursor:pointer;border-radius:10px}
-.btn-b{background:#0a84ff;color:#fff;padding:9px 14px;font-size:13px}
+.btn-b{background:linear-gradient(135deg,#0a84ff,#2563eb);color:#fff;padding:9px 14px;font-size:13px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{background:#1e2636;color:#e2e8f0;padding:6px 10px;border-radius:16px;font-size:12px;border:1px solid #2e3a52}
-.chip.on{background:#0a84ff;color:#fff}
-.fbox{display:flex;justify-content:space-between;align-items:center;background:#0b0e14;border:1px dashed #3b4861;padding:8px 11px;border-radius:10px;font-size:12px}
+.chip{background:#1e2636;color:#e2e8f0;padding:6px 11px;border-radius:16px;font-size:12px;border:1px solid #2e3a52}
+.chip.on{background:#0a84ff;color:#fff;border-color:#38bdf8}
+.fbox{display:flex;justify-content:space-between;align-items:center;background:#0b0e14;border:1px dashed #3b4861;padding:9px 11px;border-radius:10px;font-size:12px}
 .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.citem{background:#0b0e14;border:1px solid #242e40;padding:6px 9px;border-radius:9px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px}
-input[type=color]{width:26px;height:22px;border:none;background:none}
+.citem{background:#0b0e14;border:1px solid #242e40;padding:6px 9px;border-radius:9px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:#cbd5e1}
+input[type=color]{width:26px;height:22px;border:none;background:none;cursor:pointer}
 .sgrp{display:flex;flex-direction:column;gap:4px;font-size:12px}
 .shdr{display:flex;justify-content:space-between;color:#cbd5e1}
 input[type=range]{width:100%;accent-color:#0a84ff}
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.mock{position:relative;height:235px;border-radius:15px;overflow:hidden;border:1px solid #334155;background:#0d131f}
+.mock{position:relative;height:240px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.2);background:#0d131f}
 .mwall{position:absolute;inset:-8px;background:linear-gradient(135deg,#1e293b,#0f172a,#1e1b4b);background-size:cover;background-position:center}
 .mdim{position:absolute;inset:0;background:#000;opacity:.25}
 .mcont{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:7px}
 .mbar{padding:5px 8px;border-radius:9px;font-size:11px;font-weight:700;display:flex;justify-content:space-between}
 .mitem{padding:5px 7px;border-radius:8px;margin-bottom:4px;font-size:10px}
 .mbub{padding:6px 8px;font-size:10px;max-width:86%;margin-bottom:5px}
-.btn-main{width:100%;padding:13px;background:linear-gradient(135deg,#00b4db,#0083b0);color:#fff;font-size:14px;border-radius:13px}
+.btn-main{width:100%;padding:14px;background:linear-gradient(135deg,#00b4db,#0083b0);color:#fff;font-size:14.5px;font-weight:700;border-radius:14px}
 .btn-2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .btn-s{padding:10px;background:#1e2636;color:#e2e8f0;font-size:12px;border:1px solid #2e3a52}
-#msg{text-align:center;font-size:12px;color:#34d399;min-height:16px}
+#msg{text-align:center;font-size:12px;color:#34d399;min-height:18px;font-weight:600}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="card top">
-    <strong style="font-size:15px">💧 ColorOS 17 Glass</strong>
+    <strong style="font-size:15px">💧 Liquid Glass Studio</strong>
     <span class="badge" id="jsState">Loading...</span>
   </div>
+
   <div class="card">
-    <div class="lbl">1. Mood & Presets</div>
+    <div class="lbl"><span>1. Aesthetic Presets</span><span id="modeLbl" style="color:#38bdf8">Dark Glass</span></div>
     <div class="row">
-      <input type="text" id="moodIn" value="Black" placeholder="Black, Pink, Green, Neon, Light">
+      <input type="text" id="moodIn" placeholder="Type: Sakura, Aesthetic, Black, Light...">
       <button type="button" class="btn-b" id="bMood">Auto ✨</button>
     </div>
     <div class="chips" id="chipBox">
-      <button type="button" class="chip on" data-k="ice">💧 Ice</button>
-      <button type="button" class="chip" data-k="sakura">🌸 Sakura</button>
+      <button type="button" class="chip on" data-k="sakura">🌸 Sakura Pink</button>
+      <button type="button" class="chip" data-k="ice">💧 ColorOS Ice</button>
+      <button type="button" class="chip" data-k="lavender">💜 Lavender</button>
       <button type="button" class="chip" data-k="midnight">🌃 Midnight</button>
-      <button type="button" class="chip" data-k="emerald">🌿 Emerald</button>
-      <button type="button" class="chip" data-k="neon">⚡ Neon</button>
-      <button type="button" class="chip" data-k="crystal">🤍 Light</button>
+      <button type="button" class="chip" data-k="emerald">🌿 Sage Green</button>
+      <button type="button" class="chip" data-k="crystal">🤍 Pure Light</button>
     </div>
   </div>
+
   <div class="card">
-    <div class="lbl">2. Wallpaper Embed & Name</div>
-    <input type="text" id="tName" value="ColorOS17_Glass">
+    <div class="lbl"><span>2. Wallpaper & Auto-Palette</span></div>
+    <input type="text" id="tName" value="LiquidGlass_Theme">
     <div class="fbox">
       <span id="fLbl" style="color:#94a3b8;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Default Gradient</span>
-      <label class="btn-b" style="padding:6px 11px;border-radius:8px;cursor:pointer">
+      <label class="btn-b" style="padding:6px 12px;border-radius:8px;cursor:pointer">
         Choose Photo
         <input type="file" id="wIn" accept="image/*" style="display:none">
       </label>
     </div>
   </div>
+
   <div class="card">
-    <div class="lbl">3. Glass Palette (White-Bug Fixed)</div>
+    <div class="lbl"><span>3. Theme Colors</span><span style="color:#34d399;font-size:10px">Zero Glitch Lock</span></div>
     <div class="cgrid">
-      <div class="citem"><span>Home BG</span><input type="color" id="c1" value="#101522"></div>
-      <div class="citem"><span>Bars/Tabs</span><input type="color" id="c2" value="#182234"></div>
-      <div class="citem"><span>My Bubble</span><input type="color" id="c3" value="#0a84ff"></div>
-      <div class="citem"><span>Friend Bub</span><input type="color" id="c4" value="#1e293b"></div>
+      <div class="citem"><span>Home BG</span><input type="color" id="c1" value="#24101c"></div>
+      <div class="citem"><span>Bars / Menus</span><input type="color" id="c2" value="#36172a"></div>
+      <div class="citem"><span>My Bubble</span><input type="color" id="c3" value="#ec4899"></div>
+      <div class="citem"><span>Friend Bub</span><input type="color" id="c4" value="#3b182e"></div>
       <div class="citem"><span>Main Text</span><input type="color" id="c5" value="#ffffff"></div>
-      <div class="citem"><span>Subtext</span><input type="color" id="c6" value="#cbd5e1"></div>
-      <div class="citem"><span>Accent</span><input type="color" id="c7" value="#38bdf8"></div>
-      <div class="citem"><span>Date/Float</span><input type="color" id="c8" value="#1e293b"></div>
+      <div class="citem"><span>Bio / Subtext</span><input type="color" id="c6" value="#fbcfe8"></div>
+      <div class="citem"><span>Accent / Icons</span><input type="color" id="c7" value="#f472b6"></div>
+      <div class="citem"><span>Date / Float</span><input type="color" id="c8" value="#36172a"></div>
     </div>
   </div>
+
   <div class="card">
-    <div class="lbl">4. Sliders</div>
-    <div class="sgrp"><div class="shdr"><span>Glass Opacity</span><span id="vOp">55%</span></div><input type="range" id="sOp" min="20" max="88" value="55"></div>
-    <div class="sgrp"><div class="shdr"><span>Frost Blur</span><span id="vBl">6 px</span></div><input type="range" id="sBl" min="0" max="20" value="6"></div>
-    <div class="sgrp"><div class="shdr"><span>Wallpaper Darkness</span><span id="vDm">25%</span></div><input type="range" id="sDm" min="0" max="80" value="25"></div>
-    <div class="sgrp"><div class="shdr"><span>Bubble Radius</span><span id="vRd">16 px</span></div><input type="range" id="sRd" min="6" max="24" value="16"></div>
+    <div class="lbl"><span>4. Glass & Wallpaper Controls</span></div>
+    <div class="sgrp"><div class="shdr"><span>💧 Glass Opacity</span><span id="vOp">58%</span></div><input type="range" id="sOp" min="25" max="88" value="58"></div>
+    <div class="sgrp"><div class="shdr"><span>🌫️ Wallpaper Blur</span><span id="vBl">7 px</span></div><input type="range" id="sBl" min="0" max="20" value="7"></div>
+    <div class="sgrp"><div class="shdr"><span>🌑 Wallpaper Darkness</span><span id="vDm">25%</span></div><input type="range" id="sDm" min="0" max="75" value="25"></div>
+    <div class="sgrp"><div class="shdr"><span>⚪ Bubble Radius</span><span id="vRd">18 px</span></div><input type="range" id="sRd" min="8" max="24" value="18"></div>
   </div>
+
   <div class="pgrid">
     <div class="mock">
       <div class="mwall" id="w1"></div><div class="mdim" id="d1"></div>
@@ -99,32 +104,33 @@ input[type=range]{width:100%;accent-color:#0a84ff}
         <div>
           <div class="mbar" id="bar1"><span>Telegram</span><span id="acc1">All</span></div>
           <div style="margin-top:6px">
-            <div class="mitem" id="it1"><strong>Kiewie ✨</strong><br><span style="opacity:.8">Wallpaper embedded!</span></div>
-            <div class="mitem" id="it2"><strong>Saved Messages</strong><br><span style="opacity:.8">Glass UI v4</span></div>
+            <div class="mitem" id="it1"><strong>Princess ✨</strong><br><span id="sub1" style="opacity:.85">Menus & Bio fixed!</span></div>
+            <div class="mitem" id="it2"><strong>Saved Messages</strong><br><span id="sub2" style="opacity:.85">Wallpaper packed 💧</span></div>
           </div>
         </div>
-        <div class="mbar" id="srch" style="font-weight:400;opacity:.85">Search...</div>
+        <div class="mbar" id="srch" style="font-weight:400;opacity:.9">Search...</div>
       </div>
     </div>
     <div class="mock">
       <div class="mwall" id="w2"></div><div class="mdim" id="d2"></div>
       <div class="mcont">
-        <div class="mbar" id="bar2"><span>Kiewie ✨</span><span style="font-size:9px">online</span></div>
+        <div class="mbar" id="bar2"><span>Princess ✨</span><span style="font-size:9px">online</span></div>
         <div>
-          <div class="mbub" id="bf">Frosted glass 💧</div>
-          <div class="mbub" id="bm" style="margin-left:auto">Clean edges ✨</div>
+          <div class="mbub" id="bf">Pretty frosted glass 🌸</div>
+          <div class="mbub" id="bm" style="margin-left:auto">Zero white/black bug ✨</div>
         </div>
-        <div class="mbar" id="minp" style="font-weight:400;opacity:.85">Message...</div>
+        <div class="mbar" id="minp" style="font-weight:400;opacity:.9">Message...</div>
       </div>
     </div>
   </div>
-  <button type="button" class="btn-main" id="bDl">⬇️ Download & Apply (.attheme)</button>
+
+  <button type="button" class="btn-main" id="bDl">⬇️ Download Theme (.attheme)</button>
   <div class="btn-2">
     <button type="button" class="btn-s" id="bSh">📤 Share to Telegram</button>
-    <button type="button" class="btn-s" id="bFx">🛡️ Fix White Glitch</button>
+    <button type="button" class="btn-s" id="bFx">🛡️ Auto-Fix Contrast</button>
   </div>
   <div id="msg"></div>
 </div>
-<script src="app.js?v=4"></script>
+<script src="app.js?v=6"></script>
 </body>
 </html>
