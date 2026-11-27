@@ -1,1 +1,319 @@
-Thank you for using TrebEdit.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ColorOS 17 Theme Studio</title>
+<style>
+*{box-sizing:border-box;font-family:sans-serif}
+body{background:#090c10;color:#fff;margin:0;padding:12px}
+.card{max-width:450px;margin:auto;background:#12171f;padding:14px;border-radius:18px;border:1px solid #2b323b}
+h2{text-align:center;margin:0 0 10px;font-size:18px}
+.box{background:#0b0f15;padding:10px;border-radius:12px;border:1px solid #222831;margin-bottom:10px}
+.lbl{font-size:11px;color:#8b949e;display:block;margin-bottom:5px;font-weight:bold}
+.row{display:flex;gap:6px;margin-bottom:7px}
+input[type=text],input[type=file]{width:100%;padding:9px;border-radius:9px;border:1px solid #2b323b;background:#161b22;color:#fff;font-size:13px}
+.btn{padding:0 14px;border:none;border-radius:9px;background:#0072ff;color:#fff;font-weight:bold;cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{background:#1c232d;border:1px solid #30363d;color:#ddd;padding:5px 9px;border-radius:16px;font-size:11px;cursor:pointer}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+.ctrl{background:#0b0f15;padding:7px 9px;border-radius:9px;display:flex;justify-content:space-between;align-items:center;font-size:11px;border:1px solid #222831}
+input[type=color]{width:30px;height:24px;border:none;background:none}
+.sbox{background:#0b0f15;padding:9px 11px;border-radius:11px;margin-bottom:10px;font-size:11.5px;border:1px solid #222831}
+input[type=range]{width:100%;margin-top:4px}
+.screens{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:12px 0}
+.phone{height:285px;border-radius:16px;overflow:hidden;border:1.5px solid rgba(255,255,255,0.25);display:flex;flex-direction:column;background-size:cover;background-position:center}
+.bar{padding:8px 9px;font-size:11.5px;font-weight:bold;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.2)}
+.tabs{display:flex;gap:6px;padding:5px 8px;font-size:9.5px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.tab-pill{padding:2px 7px;border-radius:10px;border:1px solid rgba(255,255,255,0.2)}
+.item{margin:4px 6px;padding:6px 8px;border-radius:11px;border:1px solid rgba(255,255,255,0.14);font-size:10.5px;display:flex;justify-content:space-between;align-items:center}
+.badge{padding:2px 6px;border-radius:10px;font-size:9px;font-weight:bold}
+.area{flex:1;padding:7px;display:flex;flex-direction:column;gap:6px;justify-content:center}
+.pill{align-self:center;padding:2px 8px;border-radius:10px;font-size:9px;border:1px solid rgba(255,255,255,0.25)}
+.bbl{padding:6px 9px;border-radius:13px;font-size:10.5px;max-width:88%;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.32);box-shadow:inset 0 1px 1px rgba(255,255,255,0.4)}
+.rep{border-left:2.5px solid;padding-left:5px;margin-bottom:3px;font-size:9px}
+.in{align-self:flex-start;border-bottom-left-radius:3px}
+.out{align-self:flex-end;border-bottom-right-radius:3px}
+.dl{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,#00c6ff,#0072ff);color:#fff;font-size:15px;font-weight:bold;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>💧 ColorOS 17 Liquid Glass Studio</h2>
+
+<div class="box">
+  <span class="lbl">1. AUTO MOOD & VIBE GENERATOR</span>
+  <div class="row">
+    <input type="text" id="mood" placeholder="Type: Sakura, Rain, Neon, Ice...">
+    <button class="btn" onclick="autoMood()">Auto ✨</button>
+  </div>
+  <div class="chips">
+    <span class="chip" onclick="setP('ice')">💧 ColorOS Ice</span>
+    <span class="chip" onclick="setP('pink')">🌸 Sakura</span>
+    <span class="chip" onclick="setP('rain')">🌧️ Midnight</span>
+    <span class="chip" onclick="setP('leaf')">🌿 Emerald</span>
+    <span class="chip" onclick="setP('neon')">⚡ Neon</span>
+    <span class="chip" onclick="setP('light')">🤍 Crystal</span>
+  </div>
+</div>
+
+<div class="box">
+  <span class="lbl">2. WALLPAPER & SMART COLOR SYNC</span>
+  <input type="text" id="tname" value="ColorOS17_Glass" style="margin-bottom:6px">
+  <input type="file" id="wp" accept="image/*" onchange="loadWP(this)">
+  <div id="wpMsg" style="font-size:11px;color:#58a6ff;margin-top:5px">Select photo for Frosted Wallpaper</div>
+  <button class="btn" id="syncBtn" onclick="syncPhoto()" style="width:100%;padding:7px;margin-top:6px;display:none">🎨 Match Colors from Photo</button>
+</div>
+
+<div class="grid">
+  <div class="ctrl"><span>Home List BG</span><input type="color" id="homeBg" value="#0c1520" oninput="draw()"></div>
+  <div class="ctrl"><span>Glass Bars/Tabs</span><input type="color" id="barCol" value="#162638" oninput="draw()"></div>
+  <div class="ctrl"><span>My Bubble</span><input type="color" id="outCol" value="#0284c7" oninput="draw()"></div>
+  <div class="ctrl"><span>Friend Bubble</span><input type="color" id="inCol" value="#1b2c40" oninput="draw()"></div>
+  <div class="ctrl"><span>Bio & Main Text</span><input type="color" id="txtCol" value="#ffffff" oninput="draw()"></div>
+  <div class="ctrl"><span>Time / Subtext</span><input type="color" id="subCol" value="#bae6fd" oninput="draw()"></div>
+  <div class="ctrl"><span>Accent / Icons</span><input type="color" id="accCol" value="#38bdf8" oninput="draw()"></div>
+  <div class="ctrl"><span>Reply / Links</span><input type="color" id="repCol" value="#7dd3fc" oninput="draw()"></div>
+  <div class="ctrl"><span>Date / Float</span><input type="color" id="pillCol" value="#132233" oninput="draw()"></div>
+  <div class="ctrl"><span>Emoji Panel</span><input type="color" id="panCol" value="#0f1b29" oninput="draw()"></div>
+</div>
+
+<div class="sbox">
+  <div style="display:flex;justify-content:space-between"><span>💧 Liquid Glass Opacity</span><span id="aLbl">50%</span></div>
+  <input type="range" id="alpha" min="25" max="90" value="50" oninput="draw()">
+  <div style="display:flex;justify-content:space-between;margin-top:6px"><span>🌫️ Wallpaper Frost Blur</span><span id="bLbl">5 px</span></div>
+  <input type="range" id="blur" min="0" max="15" value="5" oninput="draw();makeWP()">
+</div>
+
+<div class="screens">
+  <div class="phone" id="sHome">
+    <div class="bar" id="bHome">Telegram</div>
+    <div class="tabs" id="tBar"><span class="tab-pill" id="tPill">All 1</span><span>Personal</span></div>
+    <div class="item" id="i1"><div><b>Kiewie My pookie</b><br><span class="sub">Liquid glass!</span></div><span class="badge" id="bdg">2</span></div>
+    <div class="item" id="i2"><div><b>Saved Messages</b><br><span class="sub">Bio & Info clear!</span></div></div>
+    <div class="item" id="i3"><div><b>ColorOS Studio</b><br><span class="sub">Glass UI ✨</span></div></div>
+  </div>
+  <div class="phone" id="sChat">
+    <div class="bar" id="bChat">Kiewie ✨</div>
+    <div class="area">
+      <div class="pill" id="dPill">November 26</div>
+      <div class="bbl in" id="mIn"><div class="rep" id="rLine">Raja Kumar<br>ColorOS 17</div>Frosted depth & glow 💧</div>
+      <div class="bbl out" id="mOut">Crystal edges ✨</div>
+    </div>
+    <div class="bar" id="bMsg" style="border-top:1px solid rgba(255,255,255,0.2);border-bottom:none;font-weight:normal">Message...</div>
+  </div>
+</div>
+
+<button class="dl" onclick="saveTheme()">Download .attheme File</button>
+</div>
+
+<script>
+var g = id => document.getElementById(id);
+var rawImg = null, wpBytes = null, pRgb = null;
+var P = {
+  ice:   ['ColorOS17_Ice','#0c1520','#162638','#0284c7','#1b2c40','#ffffff','#bae6fd','#38bdf8','#7dd3fc','#132233','#0f1b29',50,5],
+  pink:  ['Sakura_Glass','#1f1119','#331a28','#be185d','#3b1e2e','#fff1f2','#fbcfe8','#f472b6','#f9a8d4','#2e1624','#21121b',52,5],
+  rain:  ['Midnight_Rain','#090d16','#141d2e','#2563eb','#182236','#f8fafc','#94a3b8','#60a5fa','#93c5fd','#111827','#0d131f',50,6],
+  leaf:  ['Emerald_Mist','#0b1712','#142920','#15803d','#183026','#f0fdf4','#bbf7d0','#4ade80','#86efac','#12241c','#0e1c16',52,5],
+  neon:  ['Neon_Pulse','#090814','#15122b','#7c3aed','#1c1838','#ffffff','#ddd6fe','#00f5d4','#c4b5fd','#131026','#0d0b1c',48,4],
+  light: ['Crystal_White','#e2e8f0','#ffffff','#bae6fd','#f8fafc','#0f172a','#475569','#0284c7','#0369a1','#f1f5f9','#e2e8f0',62,4]
+};
+var K = ['homeBg','barCol','outCol','inCol','txtCol','subCol','accCol','repCol','pillCol','panCol'];
+
+function setP(k){
+  var d = P[k]; if(!d) return;
+  g('tname').value = d[0];
+  K.forEach((id,i) => g(id).value = d[i+1]);
+  g('alpha').value = d[11]; g('blur').value = d[12];
+  makeWP(); draw();
+}
+
+function autoMood(){
+  var q = g('mood').value.toLowerCase().trim(); if(!q) return;
+  if(/ice|color|glass|aqua/.test(q)) return setP('ice');
+  if(/pink|sakura|love|cute/.test(q)) return setP('pink');
+  if(/rain|blue|night|ocean/.test(q)) return setP('rain');
+  if(/green|forest|leaf|nature/.test(q)) return setP('leaf');
+  if(/neon|cyber|purple/.test(q)) return setP('neon');
+  if(/white|light|crystal/.test(q)) return setP('light');
+  var h = 0; for(var i=0;i<q.length;i++) h = q.charCodeAt(i) + ((h<<5)-h);
+  var hue = Math.abs(h)%360;
+  var hsl = (H,S,L) => { L/=100; var a=S*Math.min(L,1-L)/100; var f=n=>{var k=(n+H/30)%12;return Math.round(255*(L-a*Math.max(Math.min(k-3,9-k,1),-1))).toString(16).padStart(2,'0')}; return '#'+f(0)+f(8)+f(4); };
+  g('tname').value = q.replace(/\s+/g,'_')+'_Glass';
+  g('homeBg').value=hsl(hue,35,10); g('barCol').value=hsl(hue,38,16); g('outCol').value=hsl(hue,65,38);
+  g('inCol').value=hsl((hue+18)%360,32,20); g('txtCol').value='#ffffff'; g('subCol').value=hsl(hue,60,82);
+  g('accCol').value=hsl(hue,85,62); g('repCol').value=hsl(hue,85,75); g('pillCol').value=hsl(hue,35,15); g('panCol').value=hsl(hue,35,12);
+  draw();
+}
+
+function loadWP(inp){
+  var f = inp.files[0]; if(!f) return;
+  g('wpMsg').innerText = '⏳ Loading photo...';
+  var r = new FileReader();
+  r.onload = e => {
+    var img = new Image();
+    img.onload = () => { rawImg = img; g('syncBtn').style.display='block'; makeWP(); };
+    img.src = e.target.result;
+  };
+  r.readAsDataURL(f);
+}
+
+function makeWP(){
+  if(!rawImg) return;
+  var bl = parseInt(g('blur').value,10), max = 1080;
+  var w = rawImg.width, h = rawImg.height;
+  if(w>max||h>max){ if(w>h){h=Math.round(h*max/w);w=max;}else{w=Math.round(w*max/h);h=max;} }
+  var cv = document.createElement('canvas'); cv.width=w; cv.height=h;
+  var cx = cv.getContext('2d');
+  if(bl>0 && cx.filter !== undefined){ cx.filter = 'blur('+bl+'px) saturate(120%) brightness(92%)'; }
+  var p = bl*2; cx.drawImage(rawImg,-p,-p,w+p*2,h+p*2);
+  cx.filter = 'none';
+  var d = cx.getImageData(Math.floor(w/4),Math.floor(h/4),4,4).data;
+  pRgb = {r:d[0],g:d[1],b:d[2]};
+  var dataUrl = cv.toDataURL('image/jpeg', 0.84);
+  g('sChat').style.backgroundImage = "url('"+dataUrl+"')";
+  var bin = atob(dataUrl.split(',')[1]);
+  wpBytes = new Uint8Array(bin.length);
+  for(var i=0;i<bin.length;i++) wpBytes[i] = bin.charCodeAt(i);
+  g('wpMsg').innerText = '✅ Wallpaper Ready ('+Math.round(wpBytes.length/1024)+' KB)';
+}
+
+function syncPhoto(){
+  if(!pRgb) return;
+  var hx = (r,gr,b) => '#'+[r,gr,b].map(x=>Math.max(0,Math.min(255,Math.round(x))).toString(16).padStart(2,'0')).join('');
+  g('homeBg').value=hx(pRgb.r*0.25,pRgb.g*0.25,pRgb.b*0.28);
+  g('barCol').value=hx(pRgb.r*0.38,pRgb.g*0.38,pRgb.b*0.42);
+  g('outCol').value=hx(pRgb.r*0.75+20,pRgb.g*0.75+35,pRgb.b*0.85+50);
+  g('inCol').value=hx(pRgb.r*0.35+15,pRgb.g*0.35+15,pRgb.b*0.38+20);
+  g('accCol').value=hx(pRgb.r+80,pRgb.g+95,pRgb.b+110);
+  g('repCol').value=g('accCol').value; g('pillCol').value=g('barCol').value; g('panCol').value=g('homeBg').value;
+  draw();
+}
+
+var rgba = (h,a) => 'rgba('+parseInt(h.slice(1,3),16)+','+parseInt(h.slice(3,5),16)+','+parseInt(h.slice(5,7),16)+','+a+')';
+var sInt = (h,a=1) => (parseInt(Math.round(a*255).toString(16).padStart(2,'0')+h.slice(1),16)|0);
+
+function draw(){
+  var a = g('alpha').value/100;
+  g('aLbl').innerText = g('alpha').value+'%';
+  g('bLbl').innerText = g('blur').value+' px';
+  g('sHome').style.backgroundColor = g('homeBg').value;
+  if(!wpBytes) g('sChat').style.backgroundColor = g('homeBg').value;
+  var bar = rgba(g('barCol').value,a);
+  ['bHome','bChat','bMsg'].forEach(id=>{g(id).style.background=bar;g(id).style.color=g('txtCol').value;});
+  g('tBar').style.background = rgba(g('barCol').value, Math.min(0.85, a+0.1));
+  g('tBar').style.color = g('subCol').value;
+  g('tPill').style.background = rgba(g('accCol').value, 0.25);
+  g('tPill').style.color = g('txtCol').value;
+  ['i1','i2','i3'].forEach(id=>{
+    g(id).style.color=g('txtCol').value;
+    g(id).style.background=rgba(g('barCol').value, Math.max(0.25, a-0.12));
+  });
+  document.querySelectorAll('.sub').forEach(e=>e.style.color=g('subCol').value);
+  g('bdg').style.background=g('accCol').value; g('bdg').style.color=g('homeBg').value;
+  g('dPill').style.background=rgba(g('pillCol').value,Math.min(0.85,a+0.12)); g('dPill').style.color=g('txtCol').value;
+  g('mIn').style.background=rgba(g('inCol').value,a); g('mIn').style.color=g('txtCol').value;
+  g('rLine').style.borderColor=g('repCol').value; g('rLine').style.color=g('repCol').value;
+  g('mOut').style.background=rgba(g('outCol').value,a); g('mOut').style.color=g('txtCol').value;
+}
+draw();
+
+function saveTheme(){
+  var name = (g('tname').value.trim()||'ColorOS17_Glass').replace(/\s+/g,'_');
+  var a = g('alpha').value/100;
+  var v = [
+    // Global Bio, Profile Info, Settings & List Text Fix
+    'windowBackgroundWhite='+sInt(g('homeBg').value,1),
+    'windowBackgroundGray='+sInt(g('homeBg').value,0.92),
+    'windowBackgroundWhiteBlackText='+sInt(g('txtCol').value,1),
+    'windowBackgroundWhiteGrayText='+sInt(g('subCol').value,0.85),
+    'windowBackgroundWhiteGrayText2='+sInt(g('subCol').value,0.85),
+    'windowBackgroundWhiteGrayText3='+sInt(g('subCol').value,0.8),
+    'windowBackgroundWhiteGrayText4='+sInt(g('subCol').value,0.8),
+    'windowBackgroundWhiteBlueText='+sInt(g('accCol').value,1),
+    'windowBackgroundWhiteBlueText2='+sInt(g('accCol').value,1),
+    'windowBackgroundWhiteBlueText4='+sInt(g('accCol').value,1),
+    'windowBackgroundWhiteBlueHeader='+sInt(g('accCol').value,1),
+    'windowBackgroundWhiteValueText='+sInt(g('accCol').value,1),
+    'windowBackgroundWhiteLinkText='+sInt(g('repCol').value,1),
+    'windowBackgroundWhiteInputField='+sInt(g('txtCol').value,1),
+    'windowBackgroundWhiteHintText='+sInt(g('subCol').value,0.65),
+    'windowBackgroundGrayShadow='+sInt('#000000',0.35),
+    'listSelectorSDK21='+sInt(g('accCol').value,0.18),
+    'graySection='+sInt(g('barCol').value,Math.min(0.95,a+0.18)),
+    'graySectionText='+sInt(g('subCol').value,0.9),
+
+    // Home Screen Glass Header, Folder Tabs & Bottom Bar
+    'actionBarDefault='+sInt(g('barCol').value,a),
+    'actionBarDefaultTitle='+sInt(g('txtCol').value,1),
+    'actionBarDefaultSubtitle='+sInt(g('subCol').value,1),
+    'actionBarDefaultIcon='+sInt(g('accCol').value,1),
+    'actionBarTabActiveText='+sInt(g('txtCol').value,1),
+    'actionBarTabUnactiveText='+sInt(g('subCol').value,0.75),
+    'actionBarTabLine='+sInt(g('accCol').value,1),
+    'actionBarTabSelector='+sInt(g('accCol').value,0.22),
+    'chats_tabUnreadActiveBackground='+sInt(g('accCol').value,1),
+    'chats_tabUnreadUnactiveBackground='+sInt(g('subCol').value,0.35),
+    'chats_name='+sInt(g('txtCol').value,1),
+    'chats_nameIcon='+sInt(g('accCol').value,1),
+    'chats_message='+sInt(g('subCol').value,0.85),
+    'chats_message_threeLines='+sInt(g('subCol').value,0.85),
+    'chats_nameMessage_threeLines='+sInt(g('accCol').value,1),
+    'chats_date='+sInt(g('subCol').value,0.75),
+    'chats_pinnedOverlay='+sInt(g('barCol').value,Math.max(0.28,a-0.12)),
+    'chats_pinnedIcon='+sInt(g('accCol').value,0.85),
+    'chats_muteIcon='+sInt(g('subCol').value,0.65),
+    'chats_sentCheck='+sInt(g('accCol').value,1),
+    'chats_unreadCounter='+sInt(g('accCol').value,1),
+    'chats_unreadCounterText='+sInt(g('homeBg').value,1),
+    'chats_unreadCounterMuted='+sInt(g('subCol').value,0.35),
+    'chats_actionBackground='+sInt(g('accCol').value,1),
+    'chats_actionIcon='+sInt(g('homeBg').value,1),
+    'divider='+sInt(g('txtCol').value,0.09),
+    'dialogBackground='+sInt(g('barCol').value,0.94),
+    'dialogTextBlack='+sInt(g('txtCol').value,1),
+    'dialogTextGray2='+sInt(g('subCol').value,0.85),
+    'dialogTextBlue2='+sInt(g('accCol').value,1),
+
+    // Chat Glass Bubbles & Controls
+    'chat_inBubble='+sInt(g('inCol').value,a),
+    'chat_inBubbleSelected='+sInt(g('inCol').value,Math.min(1,a+0.18)),
+    'chat_inBubbleShadow='+sInt('#000000',0.22),
+    'chat_outBubble='+sInt(g('outCol').value,a),
+    'chat_outBubbleSelected='+sInt(g('outCol').value,Math.min(1,a+0.18)),
+    'chat_outBubbleShadow='+sInt('#000000',0.22),
+    'chat_messageTextIn='+sInt(g('txtCol').value,1),
+    'chat_messageTextOut='+sInt(g('txtCol').value,1),
+    'chat_inTimeText='+sInt(g('subCol').value,0.8),
+    'chat_outTimeText='+sInt(g('subCol').value,0.85),
+    'chat_outSentCheck='+sInt(g('accCol').value,1),
+    'chat_outSentCheckSelected='+sInt(g('accCol').value,1),
+    'chat_inReplyLine='+sInt(g('repCol').value,1),
+    'chat_inReplyNameText='+sInt(g('repCol').value,1),
+    'chat_outReplyLine='+sInt(g('repCol').value,1),
+    'chat_outReplyNameText='+sInt(g('repCol').value,1),
+    'chat_messageLinkIn='+sInt(g('repCol').value,1),
+    'chat_messageLinkOut='+sInt(g('repCol').value,1),
+    'chat_serviceBackground='+sInt(g('pillCol').value,Math.min(0.85,a+0.12)),
+    'chat_serviceText='+sInt(g('txtCol').value,1),
+    'chat_goDownButton='+sInt(g('pillCol').value,Math.min(0.9,a+0.15)),
+    'chat_goDownButtonIcon='+sInt(g('accCol').value,1),
+    'chat_messagePanelBackground='+sInt(g('barCol').value,a),
+    'chat_messagePanelText='+sInt(g('txtCol').value,1),
+    'chat_messagePanelHint='+sInt(g('subCol').value,0.65),
+    'chat_messagePanelIcons='+sInt(g('accCol').value,1),
+    'chat_emojiPanelBackground='+sInt(g('panCol').value,0.94),
+    'chat_emojiPanelIcon='+sInt(g('subCol').value,0.75),
+    'chat_emojiPanelIconSelected='+sInt(g('accCol').value,1)
+  ];
+  if(!wpBytes) v.push('chat_wallpaper='+sInt(g('homeBg').value,1));
+  var enc = new TextEncoder(), txt = v.join('\n');
+  var blob = wpBytes
+    ? new Blob([enc.encode(txt+'\n\nWPS\n'), wpBytes, enc.encode('\nWPE\n')], {type:'application/octet-stream'})
+    : new Blob([txt], {type:'application/octet-stream'});
+  var aTag = document.createElement('a');
+  aTag.href = URL.createObjectURL(blob); aTag.download = name+'.attheme'; aTag.click();
+}
+</script>
+</body>
+</html>
