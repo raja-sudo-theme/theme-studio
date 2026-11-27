@@ -46,7 +46,6 @@ input[type=range]{width:100%;accent-color:#0a84ff}
     <strong style="font-size:15px">💧 ColorOS 17 Glass</strong>
     <span class="badge" id="jsState">Loading...</span>
   </div>
-
   <div class="card">
     <div class="lbl">1. Mood & Presets</div>
     <div class="row">
@@ -62,7 +61,6 @@ input[type=range]{width:100%;accent-color:#0a84ff}
       <button type="button" class="chip" data-k="crystal">🤍 Light</button>
     </div>
   </div>
-
   <div class="card">
     <div class="lbl">2. Wallpaper Embed & Name</div>
     <input type="text" id="tName" value="ColorOS17_Glass">
@@ -74,7 +72,6 @@ input[type=range]{width:100%;accent-color:#0a84ff}
       </label>
     </div>
   </div>
-
   <div class="card">
     <div class="lbl">3. Glass Palette (White-Bug Fixed)</div>
     <div class="cgrid">
@@ -84,4 +81,50 @@ input[type=range]{width:100%;accent-color:#0a84ff}
       <div class="citem"><span>Friend Bub</span><input type="color" id="c4" value="#1e293b"></div>
       <div class="citem"><span>Main Text</span><input type="color" id="c5" value="#ffffff"></div>
       <div class="citem"><span>Subtext</span><input type="color" id="c6" value="#cbd5e1"></div>
-      <div class="citem"><span>Accent</span><input
+      <div class="citem"><span>Accent</span><input type="color" id="c7" value="#38bdf8"></div>
+      <div class="citem"><span>Date/Float</span><input type="color" id="c8" value="#1e293b"></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="lbl">4. Sliders</div>
+    <div class="sgrp"><div class="shdr"><span>Glass Opacity</span><span id="vOp">55%</span></div><input type="range" id="sOp" min="20" max="88" value="55"></div>
+    <div class="sgrp"><div class="shdr"><span>Frost Blur</span><span id="vBl">6 px</span></div><input type="range" id="sBl" min="0" max="20" value="6"></div>
+    <div class="sgrp"><div class="shdr"><span>Wallpaper Darkness</span><span id="vDm">25%</span></div><input type="range" id="sDm" min="0" max="80" value="25"></div>
+    <div class="sgrp"><div class="shdr"><span>Bubble Radius</span><span id="vRd">16 px</span></div><input type="range" id="sRd" min="6" max="24" value="16"></div>
+  </div>
+  <div class="pgrid">
+    <div class="mock">
+      <div class="mwall" id="w1"></div><div class="mdim" id="d1"></div>
+      <div class="mcont">
+        <div>
+          <div class="mbar" id="bar1"><span>Telegram</span><span id="acc1">All</span></div>
+          <div style="margin-top:6px">
+            <div class="mitem" id="it1"><strong>Kiewie ✨</strong><br><span style="opacity:.8">Wallpaper embedded!</span></div>
+            <div class="mitem" id="it2"><strong>Saved Messages</strong><br><span style="opacity:.8">Glass UI v4</span></div>
+          </div>
+        </div>
+        <div class="mbar" id="srch" style="font-weight:400;opacity:.85">Search...</div>
+      </div>
+    </div>
+    <div class="mock">
+      <div class="mwall" id="w2"></div><div class="mdim" id="d2"></div>
+      <div class="mcont">
+        <div class="mbar" id="bar2"><span>Kiewie ✨</span><span style="font-size:9px">online</span></div>
+        <div>
+          <div class="mbub" id="bf">Frosted glass 💧</div>
+          <div class="mbub" id="bm" style="margin-left:auto">Clean edges ✨</div>
+        </div>
+        <div class="mbar" id="minp" style="font-weight:400;opacity:.85">Message...</div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn-main" id="bDl">⬇️ Download & Apply (.attheme)</button>
+  <div class="btn-2">
+    <button type="button" class="btn-s" id="bSh">📤 Share to Telegram</button>
+    <button type="button" class="btn-s" id="bFx">🛡️ Fix White Glitch</button>
+  </div>
+  <div id="msg"></div>
+</div>
+<script src="app.js?v=4"></script>
+</body>
+</html>
