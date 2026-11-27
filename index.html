@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ColorOS 17 Theme Studio</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 *{box-sizing:border-box;font-family:sans-serif}
 body{background:#090c10;color:#fff;margin:0;padding:12px}
@@ -35,6 +36,7 @@ input[type=range]{width:100%;margin-top:4px}
 .in{align-self:flex-start;border-bottom-left-radius:3px}
 .out{align-self:flex-end;border-bottom-right-radius:3px}
 .dl{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,#00c6ff,#0072ff);color:#fff;font-size:15px;font-weight:bold;cursor:pointer}
+.hint{text-align:center;font-size:11px;color:#8b949e;margin-top:7px}
 </style>
 </head>
 <body>
@@ -104,10 +106,12 @@ input[type=range]{width:100%;margin-top:4px}
   </div>
 </div>
 
-<button class="dl" onclick="saveTheme()">Download .attheme File</button>
+<button class="dl" id="setBtn" onclick="applyTheme()">🎨 Set Theme in Telegram</button>
+<div class="hint" id="hintTxt">Tap button → Send to <b>Saved Messages</b> → Tap file to Apply ✨</div>
 </div>
 
 <script>
+if(window.Telegram && Telegram.WebApp){ Telegram.WebApp.ready(); Telegram.WebApp.expand(); }
 var g = id => document.getElementById(id);
 var rawImg = null, wpBytes = null, pRgb = null;
 var P = {
@@ -218,11 +222,9 @@ function draw(){
 }
 draw();
 
-function saveTheme(){
-  var name = (g('tname').value.trim()||'ColorOS17_Glass').replace(/\s+/g,'_');
+function buildBlob(){
   var a = g('alpha').value/100;
   var v = [
-    // Global Bio, Profile Info, Settings & List Text Fix
     'windowBackgroundWhite='+sInt(g('homeBg').value,1),
     'windowBackgroundGray='+sInt(g('homeBg').value,0.92),
     'windowBackgroundWhiteBlackText='+sInt(g('txtCol').value,1),
@@ -242,8 +244,6 @@ function saveTheme(){
     'listSelectorSDK21='+sInt(g('accCol').value,0.18),
     'graySection='+sInt(g('barCol').value,Math.min(0.95,a+0.18)),
     'graySectionText='+sInt(g('subCol').value,0.9),
-
-    // Home Screen Glass Header, Folder Tabs & Bottom Bar
     'actionBarDefault='+sInt(g('barCol').value,a),
     'actionBarDefaultTitle='+sInt(g('txtCol').value,1),
     'actionBarDefaultSubtitle='+sInt(g('subCol').value,1),
@@ -274,8 +274,6 @@ function saveTheme(){
     'dialogTextBlack='+sInt(g('txtCol').value,1),
     'dialogTextGray2='+sInt(g('subCol').value,0.85),
     'dialogTextBlue2='+sInt(g('accCol').value,1),
-
-    // Chat Glass Bubbles & Controls
     'chat_inBubble='+sInt(g('inCol').value,a),
     'chat_inBubbleSelected='+sInt(g('inCol').value,Math.min(1,a+0.18)),
     'chat_inBubbleShadow='+sInt('#000000',0.22),
@@ -308,11 +306,28 @@ function saveTheme(){
   ];
   if(!wpBytes) v.push('chat_wallpaper='+sInt(g('homeBg').value,1));
   var enc = new TextEncoder(), txt = v.join('\n');
-  var blob = wpBytes
+  return wpBytes
     ? new Blob([enc.encode(txt+'\n\nWPS\n'), wpBytes, enc.encode('\nWPE\n')], {type:'application/octet-stream'})
     : new Blob([txt], {type:'application/octet-stream'});
+}
+
+async function applyTheme(){
+  var name = (g('tname').value.trim()||'ColorOS17_Glass').replace(/\s+/g,'_');
+  var fname = name+'.attheme';
+  var blob = buildBlob();
+  var file = new File([blob], fname, {type:'application/octet-stream'});
+  if(navigator.canShare && navigator.canShare({files:[file]})){
+    try{
+      await navigator.share({files:[file], title:fname, text:'Tap file in Telegram to Apply Theme ✨'});
+      g('hintTxt').innerHTML = '✅ Sent! Tap <b>'+fname+'</b> in chat to Apply';
+      return;
+    }catch(e){}
+  }
   var aTag = document.createElement('a');
-  aTag.href = URL.createObjectURL(blob); aTag.download = name+'.attheme'; aTag.click();
+  aTag.href = URL.createObjectURL(blob); aTag.download = fname; aTag.click();
+  if(window.Telegram && Telegram.WebApp){
+    Telegram.WebApp.showAlert('If download is blocked inside Telegram, tap ⋮ (top right) → Open in Chrome to save '+fname);
+  }
 }
 </script>
 </body>
